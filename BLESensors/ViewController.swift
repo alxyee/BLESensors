@@ -14,6 +14,7 @@ import MessageUI
 2). STORE DATA - BLE delegate
 3). PREPARE DATA - Chart View
 4). DISPLAY DATA - Chart View
+5). EMAIL DATA - MFMaildelegate
 */
 class ViewController: UIViewController, BLEManagerDelegate {
     enum GraphViews {
@@ -284,6 +285,7 @@ extension ViewController: ChartViewDelegate{
     func chartTranslated(chartView: ChartViewBase, dX: CGFloat, dY: CGFloat){}
 }
 //MARK: MFMaildelegate
+// 5) EMAIL DATA
 extension ViewController: MFMailComposeViewControllerDelegate{
     @IBAction func sendEmail(sender : AnyObject) {
         var emailTitle = "Accel Data"
