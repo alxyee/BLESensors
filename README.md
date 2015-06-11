@@ -1,5 +1,5 @@
 # BLESensors
-iOS app (Swift) that collects data from bluetooth modules (Red Bear Labs) and displays data in real-time as a line chart. 
+iOS app (Swift) that collects data from bluetooth modules (Red Bear Labs) and displays data in real-time as a line chart. There is also a email button to send the data as a timestamped .csv file through email. 
 
 #Dependencies 
 Software:
