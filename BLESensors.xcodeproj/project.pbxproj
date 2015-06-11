@@ -13,6 +13,15 @@
 		72CB38BA1B291FF700470422 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 72CB38B91B291FF700470422 /* Images.xcassets */; };
 		72CB38BD1B291FF700470422 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72CB38BB1B291FF700470422 /* LaunchScreen.xib */; };
 		72CB38C91B291FF700470422 /* BLESensorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38C81B291FF700470422 /* BLESensorsTests.swift */; };
+		72CB38D31B2920DC00470422 /* Charts in Resources */ = {isa = PBXBuildFile; fileRef = 72CB38D21B2920DC00470422 /* Charts */; };
+		72CB38D71B29228200470422 /* BLEManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38D61B29228200470422 /* BLEManager.swift */; };
+		72CB38D91B29235D00470422 /* BLEConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38D81B29235D00470422 /* BLEConstants.swift */; };
+		72CB38DB1B29261300470422 /* Accelerometer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38DA1B29261300470422 /* Accelerometer.swift */; };
+		72CB38DD1B2926E400470422 /* GraphModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38DC1B2926E400470422 /* GraphModel.swift */; };
+		72CB38DF1B2927CB00470422 /* PlotChartChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38DE1B2927CB00470422 /* PlotChartChoices.swift */; };
+		72CB38E11B29284B00470422 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB38E01B29284B00470422 /* Charts.framework */; };
+		72CB38E21B29284C00470422 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB38E01B29284B00470422 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72CB38E51B29393900470422 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72CB38E41B29393900470422 /* fontawesome-webfont.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -25,6 +34,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		72CB38E31B29284C00470422 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				72CB38E21B29284C00470422 /* Charts.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		72CB38AD1B291FF700470422 /* BLESensors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BLESensors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		72CB38B11B291FF700470422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,6 +59,15 @@
 		72CB38C21B291FF700470422 /* BLESensorsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BLESensorsTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		72CB38C71B291FF700470422 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		72CB38C81B291FF700470422 /* BLESensorsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BLESensorsTests.swift; sourceTree = "<group>"; };
+		72CB38D21B2920DC00470422 /* Charts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Charts; sourceTree = "<group>"; };
+		72CB38D41B29210200470422 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "BLESensors/Charts/build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
+		72CB38D61B29228200470422 /* BLEManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEManager.swift; sourceTree = "<group>"; };
+		72CB38D81B29235D00470422 /* BLEConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BLEConstants.swift; sourceTree = "<group>"; };
+		72CB38DA1B29261300470422 /* Accelerometer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Accelerometer.swift; sourceTree = "<group>"; };
+		72CB38DC1B2926E400470422 /* GraphModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphModel.swift; sourceTree = "<group>"; };
+		72CB38DE1B2927CB00470422 /* PlotChartChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotChartChoices.swift; sourceTree = "<group>"; };
+		72CB38E01B29284B00470422 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Charts.framework; path = "/Users/alexyee/Library/Developer/Xcode/DerivedData/BLESensors-bsduiwiwyyrzfraboacweegasfra/Build/Products/Debug-iphoneos/Charts.framework"; sourceTree = "<absolute>"; };
+		72CB38E41B29393900470422 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72CB38E11B29284B00470422 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +92,9 @@
 		72CB38A41B291FF700470422 = {
 			isa = PBXGroup;
 			children = (
+				72CB38E41B29393900470422 /* fontawesome-webfont.ttf */,
+				72CB38E01B29284B00470422 /* Charts.framework */,
+				72CB38D41B29210200470422 /* Charts.framework */,
 				72CB38AF1B291FF700470422 /* BLESensors */,
 				72CB38C51B291FF700470422 /* BLESensorsTests */,
 				72CB38AE1B291FF700470422 /* Products */,
@@ -77,12 +113,18 @@
 		72CB38AF1B291FF700470422 /* BLESensors */ = {
 			isa = PBXGroup;
 			children = (
+				72CB38D21B2920DC00470422 /* Charts */,
 				72CB38B21B291FF700470422 /* AppDelegate.swift */,
 				72CB38B41B291FF700470422 /* ViewController.swift */,
 				72CB38B61B291FF700470422 /* Main.storyboard */,
 				72CB38B91B291FF700470422 /* Images.xcassets */,
 				72CB38BB1B291FF700470422 /* LaunchScreen.xib */,
 				72CB38B01B291FF700470422 /* Supporting Files */,
+				72CB38D61B29228200470422 /* BLEManager.swift */,
+				72CB38D81B29235D00470422 /* BLEConstants.swift */,
+				72CB38DA1B29261300470422 /* Accelerometer.swift */,
+				72CB38DC1B2926E400470422 /* GraphModel.swift */,
+				72CB38DE1B2927CB00470422 /* PlotChartChoices.swift */,
 			);
 			path = BLESensors;
 			sourceTree = "<group>";
@@ -122,6 +164,7 @@
 				72CB38A91B291FF700470422 /* Sources */,
 				72CB38AA1B291FF700470422 /* Frameworks */,
 				72CB38AB1B291FF700470422 /* Resources */,
+				72CB38E31B29284C00470422 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -194,7 +237,9 @@
 			files = (
 				72CB38B81B291FF700470422 /* Main.storyboard in Resources */,
 				72CB38BD1B291FF700470422 /* LaunchScreen.xib in Resources */,
+				72CB38E51B29393900470422 /* fontawesome-webfont.ttf in Resources */,
 				72CB38BA1B291FF700470422 /* Images.xcassets in Resources */,
+				72CB38D31B2920DC00470422 /* Charts in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +258,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				72CB38B51B291FF700470422 /* ViewController.swift in Sources */,
+				72CB38D91B29235D00470422 /* BLEConstants.swift in Sources */,
+				72CB38DF1B2927CB00470422 /* PlotChartChoices.swift in Sources */,
+				72CB38DD1B2926E400470422 /* GraphModel.swift in Sources */,
+				72CB38DB1B29261300470422 /* Accelerometer.swift in Sources */,
+				72CB38D71B29228200470422 /* BLEManager.swift in Sources */,
 				72CB38B31B291FF700470422 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +392,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BLESensors/Charts/build/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BLESensors-bsduiwiwyyrzfraboacweegasfra/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = BLESensors/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -352,6 +407,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/BLESensors/Charts/build/Debug-iphoneos",
+					"$(USER_LIBRARY_DIR)/Developer/Xcode/DerivedData/BLESensors-bsduiwiwyyrzfraboacweegasfra/Build/Products/Debug-iphoneos",
+				);
 				INFOPLIST_FILE = BLESensors/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -411,6 +471,7 @@
 				72CB38CE1B291FF700470422 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		72CB38CF1B291FF700470422 /* Build configuration list for PBXNativeTarget "BLESensorsTests" */ = {
 			isa = XCConfigurationList;
@@ -419,6 +480,7 @@
 				72CB38D11B291FF700470422 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
