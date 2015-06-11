@@ -70,7 +70,7 @@ class ViewController: UIViewController, BLEManagerDelegate {
         setupPlotData(sensorName)
         plotData()
     }
-    //Store accelerometer data in connected device dictinary
+    //Store accelerometer data in connected device dictionary
     func setAccelerometerValues(sensorName: String, rawValue: Double, sensorEnum: String){
         if(sensorEnum == "X"){
             var timeDate = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.MediumStyle)
