@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="20" width="353" height="371"/>
+                                    <rect key="frame" x="16" y="86" width="353" height="371"/>
                                 </variation>
                             </view>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mgM-oi-HGO">
@@ -38,19 +38,12 @@
                                     <segment title="Z"/>
                                 </segments>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="95" y="475" width="194" height="29"/>
+                                    <rect key="frame" x="99" y="494" width="194" height="29"/>
                                 </variation>
+                                <connections>
+                                    <action selector="chooseGraphView:" destination="BYZ-38-t0r" eventType="valueChanged" id="2Ck-GZ-lT3"/>
+                                </connections>
                             </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUt-Wq-QJb">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
-                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
-                                <state key="normal" title="Button">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="305" y="474" width="46" height="30"/>
-                                </variation>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8K-Py-nVL">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
@@ -58,8 +51,24 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="41" y="474" width="46" height="30"/>
+                                    <rect key="frame" x="45" y="493" width="46" height="30"/>
                                 </variation>
+                                <connections>
+                                    <action selector="connectionButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6op-We-POg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUt-Wq-QJb">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
+                                <state key="normal" title="Button">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="309" y="493" width="46" height="30"/>
+                                </variation>
+                                <connections>
+                                    <action selector="sendEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="WC1-xi-02f"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -67,16 +76,16 @@
                             <mask key="subviews">
                                 <exclude reference="uXL-lz-fqo"/>
                                 <exclude reference="mgM-oi-HGO"/>
-                                <exclude reference="pUt-Wq-QJb"/>
                                 <exclude reference="O8K-Py-nVL"/>
+                                <exclude reference="pUt-Wq-QJb"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="uXL-lz-fqo"/>
                                 <include reference="mgM-oi-HGO"/>
-                                <include reference="pUt-Wq-QJb"/>
                                 <include reference="O8K-Py-nVL"/>
+                                <include reference="pUt-Wq-QJb"/>
                             </mask>
                         </variation>
                     </view>
