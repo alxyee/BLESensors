@@ -27,6 +27,7 @@ class ViewController: UIViewController, BLEManagerDelegate {
     @IBOutlet weak var segmentControlView: UISegmentedControl!
     @IBOutlet weak var mailButton: UIButton!
     @IBOutlet weak var lineView: LineChartView!
+    @IBOutlet weak var plotView: GraphView!
     
     //Plot variables
     var xAxisInd = [Int]()
@@ -164,6 +165,9 @@ class ViewController: UIViewController, BLEManagerDelegate {
         var data = LineChartData(xVals: xAxisInd, dataSets: dataSets)
         data.setValueTextColor(UIColor.clearColor())
         lineView.data = data
+        
+        plotView.dataSource = plottedDevices["Accel C"]!.accelX
+        plotView.plotData()
     }
 }
 //MARK: View Controller Initialization
