@@ -26,7 +26,6 @@ class ViewController: UIViewController, BLEManagerDelegate {
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var segmentControlView: UISegmentedControl!
     @IBOutlet weak var mailButton: UIButton!
-    @IBOutlet weak var lineView: LineChartView!
     @IBOutlet weak var plotView: GraphView!
     
     //Plot variables
@@ -140,18 +139,6 @@ class ViewController: UIViewController, BLEManagerDelegate {
             }
         }
         
-        var colorCounter = 0
-        for lines in dataSets{
-            lines.setColor(plotLineColors[colorCounter])
-            lines.setCircleColor(plotLineColors[colorCounter])
-            lines.lineWidth = 4.0
-            lines.circleRadius = 0
-            colorCounter = (colorCounter + 1) % plotLineColors.count
-        }
-        var data = LineChartData(xVals: xAxisInd, dataSets: dataSets)
-        data.setValueTextColor(UIColor.clearColor())
-        lineView.data = data
-        
 //        plotView.dataSource = plottedDevices["Accel C"]!.accelX
         plotView.dataSource = []
         plotView.dataSource?.append(plottedDevices["Accel C"]!.accelX)
@@ -167,10 +154,6 @@ extension ViewController{
         bluetoothManager = BLEManager()
         bluetoothManager.bleDelegate = self
         
-        //b) Setup Chart
-        setLineChartSettings()
-        setLineChartAxisSettings()
-        setLineChartLegendSettings()
         setConnectedDeviceDictionary()
         
         //Setup Buttons
@@ -182,37 +165,6 @@ extension ViewController{
         for i in 0...PLOT_WINDOW {
             xAxisInd.append(i)
         }
-    }
-    //Setup Chart
-    func setLineChartSettings(){
-        lineView.delegate = self
-        lineView.highlightEnabled = true
-        lineView.drawGridBackgroundEnabled = false
-        lineView.drawBordersEnabled = false
-        lineView.borderColor = UIColor.whiteColor()
-        lineView.descriptionText = ""
-        lineView.noDataTextDescription = ""
-    }
-    func setLineChartAxisSettings(){
-        lineView.xAxis.gridColor = UIColor.whiteColor()
-        lineView.xAxis.drawGridLinesEnabled = false
-        lineView.xAxis.drawAxisLineEnabled = false
-        
-        lineView.leftAxis.gridColor = UIColor.whiteColor()
-        lineView.leftAxis.labelFont = UIFont (name: "HelveticaNeue-UltraLight", size: 15)!
-        lineView.leftAxis.startAtZeroEnabled = false
-        lineView.leftAxis.drawGridLinesEnabled = false
-        lineView.leftAxis.drawAxisLineEnabled = false
-        
-        lineView.rightAxis.gridColor = UIColor.whiteColor()
-        lineView.rightAxis.drawGridLinesEnabled = false
-        lineView.rightAxis.drawAxisLineEnabled = false
-        lineView.rightAxis.drawLabelsEnabled = false
-    }
-    func setLineChartLegendSettings(){
-        lineView.legend.font = UIFont (name: "HelveticaNeue-UltraLight", size: 18)!
-        lineView.legend.position = .RightOfChartInside
-        lineView.legend.form = .Circle
     }
     func setConnectedDeviceDictionary(){
         connectedDevices["Accel A"] = accelerometerA
