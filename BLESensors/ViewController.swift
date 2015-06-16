@@ -18,7 +18,7 @@ import MessageUI
 */
 class ViewController: UIViewController, BLEManagerDelegate {
     enum GraphViews {
-        case AllOneAccelerometer
+        case AllAccelerometers
         case AllX
         case AllY
         case AllZ
@@ -32,7 +32,7 @@ class ViewController: UIViewController, BLEManagerDelegate {
     var xAxisInd = [Int]()
     let PLOT_WINDOW = 100
     var plotLineColors = PlotChartChoices.pastel()
-    var whatToGraph = GraphViews.AllOneAccelerometer
+    var whatToGraph = GraphViews.AllAccelerometers
     
     //Accelerometer variables
     var accelerometerA = Accelerometer()
@@ -260,7 +260,7 @@ extension ViewController{
         switch segmentControlView.selectedSegmentIndex
         {
         case 0:
-            whatToGraph = GraphViews.AllOneAccelerometer
+            whatToGraph = GraphViews.AllAccelerometers
             break
         case 1:
             whatToGraph = GraphViews.AllX
@@ -272,7 +272,7 @@ extension ViewController{
             whatToGraph = GraphViews.AllZ
             break
         default:
-            whatToGraph = GraphViews.AllOneAccelerometer
+            whatToGraph = GraphViews.AllAccelerometers
             break
         }
     }
