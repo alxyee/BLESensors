@@ -100,7 +100,7 @@
                     </view>
                     <connections>
                         <outlet property="connectButton" destination="O8K-Py-nVL" id="4Tv-yu-U75"/>
-                        <outlet property="lineView" destination="uXL-lz-fqo" id="MkI-7S-93g"/>
+                        <outlet property="lineView" destination="uXL-lz-fqo" id="Knz-hb-7YY"/>
                         <outlet property="mailButton" destination="pUt-Wq-QJb" id="ulz-oH-Xfq"/>
                         <outlet property="plotView" destination="Pbq-ot-Ceo" id="uT4-uv-g2t"/>
                         <outlet property="segmentControlView" destination="mgM-oi-HGO" id="gZ1-NH-0rw"/>

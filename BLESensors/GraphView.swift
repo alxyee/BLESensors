@@ -7,7 +7,8 @@
 //
 import Charts
 class GraphView: LineChartView {
-    var dataSource: [ChartDataEntry]?
+    var plotLineColors = PlotChartChoices.pastel()
+    var dataSource: [[ChartDataEntry]]!
     var graphView: LineChartView!
     
     func plotData(){
@@ -15,16 +16,17 @@ class GraphView: LineChartView {
         doPlot()
     }
     func setupViewSettings(){
-        graphView = self
-        graphView.delegate = self
+        setDelegation()
         setLineChartSettings()
         setLineChartAxisSettings()
         setLineChartLegendSettings()
     }
     func doPlot(){
         var dataSets = [LineChartDataSet]()
-        var set1 = LineChartDataSet(yVals: dataSource, label: "Data")
+        for dataEntry in dataSource{
+        var set1 = LineChartDataSet(yVals: dataEntry, label: "Data")
         dataSets.append(set1)
+        }
         var xAxisInd = [Int]()
         for i in 0...100 {
             xAxisInd.append(i)
@@ -32,14 +34,24 @@ class GraphView: LineChartView {
         var data = LineChartData(xVals: xAxisInd, dataSets: dataSets)
         data.setValueTextColor(UIColor.clearColor())
         
+        var colorCounter = 0
+        for lines in dataSets{
+            lines.setColor(plotLineColors[colorCounter])
+            lines.setCircleColor(plotLineColors[colorCounter])
+            lines.lineWidth = 4.0
+            lines.circleRadius = 0
+            colorCounter = (colorCounter + 1) % plotLineColors.count
+        }
         graphView.data = data
     }
-
 }
 extension GraphView{
     //Setup Chart
-    func setLineChartSettings(){
+    func setDelegation(){
+        graphView = self
         graphView.delegate = self
+    }
+    func setLineChartSettings(){
         graphView.highlightEnabled = true
         graphView.drawGridBackgroundEnabled = false
         graphView.drawBordersEnabled = false

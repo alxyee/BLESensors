@@ -88,41 +88,62 @@ class ViewController: UIViewController, BLEManagerDelegate {
     }
     //3). PREPARE DATA for plotting
     func setupPlotData(sensorName:String){
+                    plottedDevices[sensorName]?.accelX = []
+                    plottedDevices[sensorName]?.accelY = []
+                    plottedDevices[sensorName]?.accelZ = []
+        
         let dataCount = connectedDevices[sensorName]?.accelX.count
-        //Handle scrolling graph
-        if(dataCount > PLOT_WINDOW){
-            plottedDevices[sensorName]?.accelX = []
-            plottedDevices[sensorName]?.accelY = []
-            plottedDevices[sensorName]?.accelZ = []
-            for i in 0...PLOT_WINDOW{
-                if let dataX = connectedDevices[sensorName]!.accelX[dataCount! - PLOT_WINDOW + i - 1] as Double! {
-                    let xDataEntry = ChartDataEntry(value: dataX, xIndex: i)
-                    plottedDevices[sensorName]?.accelX.append(xDataEntry)
-                }
-                if let dataY = connectedDevices[sensorName]!.accelY[dataCount! - PLOT_WINDOW + i - 1] as Double! {
-                    let yDataEntry = ChartDataEntry(value: dataY, xIndex: i)
-                    plottedDevices[sensorName]?.accelY.append(yDataEntry)
-                }
-                if let dataZ = connectedDevices[sensorName]!.accelZ[dataCount! - PLOT_WINDOW + i - 1] as Double! {
-                    let zDataEntry = ChartDataEntry(value: dataZ, xIndex: i)
-                    plottedDevices[sensorName]?.accelZ.append(zDataEntry)
-                }
-            }
+        for i in 0...PLOT_WINDOW{
+            let arrayIndex = dataCount! - 1 - PLOT_WINDOW + i
+            let safeguard = max(min(arrayIndex, dataCount!-1), 0)
+            
+            let dataX = connectedDevices[sensorName]?.accelX[safeguard] as Double!
+            let xDataEntry = ChartDataEntry(value: dataX, xIndex: i)
+            plottedDevices[sensorName]?.accelX.append(xDataEntry)
+            
+            let dataY = connectedDevices[sensorName]?.accelY[safeguard] as Double!
+            let yDataEntry = ChartDataEntry(value: dataY, xIndex: i)
+            plottedDevices[sensorName]?.accelY.append(yDataEntry)
+            
+            let dataZ = connectedDevices[sensorName]?.accelZ[safeguard] as Double!
+            let zDataEntry = ChartDataEntry(value: dataZ, xIndex: i)
+            plottedDevices[sensorName]?.accelZ.append(zDataEntry)
         }
-        else{
-            if let dataX = connectedDevices[sensorName]!.accelX.last! as Double? {
-                let xDataEntry = ChartDataEntry(value: dataX, xIndex: dataCount!)
-                plottedDevices[sensorName]?.accelX.append(xDataEntry)
-            }
-            if let dataY = connectedDevices[sensorName]!.accelY.last as Double? {
-                let yDataEntry = ChartDataEntry(value: dataY, xIndex: dataCount!)
-                plottedDevices[sensorName]?.accelY.append(yDataEntry)
-            }
-            if let dataZ = connectedDevices[sensorName]!.accelZ.last as Double? {
-                let zDataEntry = ChartDataEntry(value: dataZ, xIndex: dataCount!)
-                plottedDevices[sensorName]?.accelZ.append(zDataEntry)
-            }
-        }
+        //        let dataCount = connectedDevices[sensorName]?.accelX.count
+//        //Handle scrolling graph
+//        if(dataCount > PLOT_WINDOW){
+//            plottedDevices[sensorName]?.accelX = []
+//            plottedDevices[sensorName]?.accelY = []
+//            plottedDevices[sensorName]?.accelZ = []
+//            for i in 0...PLOT_WINDOW{
+//                if let dataX = connectedDevices[sensorName]!.accelX[dataCount! - PLOT_WINDOW + i - 1] as Double! {
+//                    let xDataEntry = ChartDataEntry(value: dataX, xIndex: i)
+//                    plottedDevices[sensorName]?.accelX.append(xDataEntry)
+//                }
+//                if let dataY = connectedDevices[sensorName]!.accelY[dataCount! - PLOT_WINDOW + i - 1] as Double! {
+//                    let yDataEntry = ChartDataEntry(value: dataY, xIndex: i)
+//                    plottedDevices[sensorName]?.accelY.append(yDataEntry)
+//                }
+//                if let dataZ = connectedDevices[sensorName]!.accelZ[dataCount! - PLOT_WINDOW + i - 1] as Double! {
+//                    let zDataEntry = ChartDataEntry(value: dataZ, xIndex: i)
+//                    plottedDevices[sensorName]?.accelZ.append(zDataEntry)
+//                }
+//            }
+//        }
+//        else{
+//            if let dataX = connectedDevices[sensorName]!.accelX.last! as Double? {
+//                let xDataEntry = ChartDataEntry(value: dataX, xIndex: dataCount!)
+//                plottedDevices[sensorName]?.accelX.append(xDataEntry)
+//            }
+//            if let dataY = connectedDevices[sensorName]!.accelY.last as Double? {
+//                let yDataEntry = ChartDataEntry(value: dataY, xIndex: dataCount!)
+//                plottedDevices[sensorName]?.accelY.append(yDataEntry)
+//            }
+//            if let dataZ = connectedDevices[sensorName]!.accelZ.last as Double? {
+//                let zDataEntry = ChartDataEntry(value: dataZ, xIndex: dataCount!)
+//                plottedDevices[sensorName]?.accelZ.append(zDataEntry)
+//            }
+//        }
     }
     //4). DISPLAY DATA on Chart View
     func plotData(){
@@ -166,7 +187,11 @@ class ViewController: UIViewController, BLEManagerDelegate {
         data.setValueTextColor(UIColor.clearColor())
         lineView.data = data
         
-        plotView.dataSource = plottedDevices["Accel C"]!.accelX
+//        plotView.dataSource = plottedDevices["Accel C"]!.accelX
+        plotView.dataSource = []
+        plotView.dataSource?.append(plottedDevices["Accel C"]!.accelX)
+        plotView.dataSource?.append(plottedDevices["Accel C"]!.accelY)
+        plotView.dataSource?.append(plottedDevices["Accel C"]!.accelZ)
         plotView.plotData()
     }
 }
