@@ -114,18 +114,15 @@
 			isa = PBXGroup;
 			children = (
 				72CB38D21B2920DC00470422 /* Charts */,
-				72CB38B21B291FF700470422 /* AppDelegate.swift */,
 				72CB38B41B291FF700470422 /* ViewController.swift */,
 				72CB38EA1B2FC94700470422 /* GraphView.swift */,
 				72CB38B61B291FF700470422 /* Main.storyboard */,
-				72CB38B91B291FF700470422 /* Images.xcassets */,
-				72CB38BB1B291FF700470422 /* LaunchScreen.xib */,
-				72CB38B01B291FF700470422 /* Supporting Files */,
 				72CB38D61B29228200470422 /* BLEManager.swift */,
 				72CB38D81B29235D00470422 /* BLEConstants.swift */,
 				72CB38DA1B29261300470422 /* Accelerometer.swift */,
 				72CB38DC1B2926E400470422 /* GraphModel.swift */,
 				72CB38DE1B2927CB00470422 /* PlotChartChoices.swift */,
+				72CB38B01B291FF700470422 /* Supporting Files */,
 			);
 			path = BLESensors;
 			sourceTree = "<group>";
@@ -133,6 +130,9 @@
 		72CB38B01B291FF700470422 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				72CB38B91B291FF700470422 /* Images.xcassets */,
+				72CB38BB1B291FF700470422 /* LaunchScreen.xib */,
+				72CB38B21B291FF700470422 /* AppDelegate.swift */,
 				72CB38B11B291FF700470422 /* Info.plist */,
 			);
 			name = "Supporting Files";
