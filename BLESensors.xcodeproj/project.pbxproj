@@ -21,8 +21,8 @@
 		72CB38DF1B2927CB00470422 /* PlotChartChoices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38DE1B2927CB00470422 /* PlotChartChoices.swift */; };
 		72CB38E51B29393900470422 /* fontawesome-webfont.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 72CB38E41B29393900470422 /* fontawesome-webfont.ttf */; };
 		72CB38EB1B2FC94700470422 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 72CB38EA1B2FC94700470422 /* GraphView.swift */; };
-		72CB38F21B2FD55F00470422 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB38F11B2FD55F00470422 /* Charts.framework */; };
-		72CB38F31B2FD55F00470422 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72CB38F11B2FD55F00470422 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		72DF8F181B31373900E71987 /* Charts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72DF8F171B31373900E71987 /* Charts.framework */; };
+		72DF8F191B31373900E71987 /* Charts.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 72DF8F171B31373900E71987 /* Charts.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,13 +36,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		72CB38F41B2FD56000470422 /* Embed Frameworks */ = {
+		72DF8F1A1B31373900E71987 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				72CB38F31B2FD55F00470422 /* Charts.framework in Embed Frameworks */,
+				72DF8F191B31373900E71987 /* Charts.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -68,7 +68,8 @@
 		72CB38DE1B2927CB00470422 /* PlotChartChoices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlotChartChoices.swift; sourceTree = "<group>"; };
 		72CB38E41B29393900470422 /* fontawesome-webfont.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "fontawesome-webfont.ttf"; sourceTree = "<group>"; };
 		72CB38EA1B2FC94700470422 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
-		72CB38F11B2FD55F00470422 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Charts.framework; path = "/Users/alexyee/Library/Developer/Xcode/DerivedData/BLESensors-bsduiwiwyyrzfraboacweegasfra/Build/Products/Debug-iphoneos/Charts.framework"; sourceTree = "<absolute>"; };
+		72DF8F0F1B3135F800E71987 /* Charts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Charts.framework; path = "BLESensors/Charts/build/Debug-iphoneos/Charts.framework"; sourceTree = "<group>"; };
+		72DF8F171B31373900E71987 /* Charts.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; name = Charts.framework; path = "/Users/alexyee/Library/Developer/Xcode/DerivedData/BLESensors-bsduiwiwyyrzfraboacweegasfra/Build/Products/Debug-iphoneos/Charts.framework"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,7 +77,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				72CB38F21B2FD55F00470422 /* Charts.framework in Frameworks */,
+				72DF8F181B31373900E71987 /* Charts.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,7 +94,8 @@
 		72CB38A41B291FF700470422 = {
 			isa = PBXGroup;
 			children = (
-				72CB38F11B2FD55F00470422 /* Charts.framework */,
+				72DF8F171B31373900E71987 /* Charts.framework */,
+				72DF8F0F1B3135F800E71987 /* Charts.framework */,
 				72CB38E41B29393900470422 /* fontawesome-webfont.ttf */,
 				72CB38AF1B291FF700470422 /* BLESensors */,
 				72CB38C51B291FF700470422 /* BLESensorsTests */,
@@ -165,7 +167,7 @@
 				72CB38A91B291FF700470422 /* Sources */,
 				72CB38AA1B291FF700470422 /* Frameworks */,
 				72CB38AB1B291FF700470422 /* Resources */,
-				72CB38F41B2FD56000470422 /* Embed Frameworks */,
+				72DF8F1A1B31373900E71987 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);

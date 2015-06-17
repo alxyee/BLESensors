@@ -47,6 +47,8 @@ class ViewController: UIViewController, BLEManagerDelegate {
     func notifyBLEDataReceived(data: [UInt8], sensorName: String) {
         for var index = 0; index + 3 <= data.count; index += 3 {
             var rawData = Int16(data[index+1]) << 8 | Int16(data[index+2])
+            var timeDate = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.MediumStyle)
+            connectedDevices[sensorName]?.timeStamp.append(timeDate)
             if(data[index] == 0x0A){
                 setAccelerometerValues(sensorName, rawValue: Double(rawData)/4096, sensorEnum: "X")
             }
@@ -63,8 +65,6 @@ class ViewController: UIViewController, BLEManagerDelegate {
     //Store accelerometer data in connected device dictionary
     func setAccelerometerValues(sensorName: String, rawValue: Double, sensorEnum: String){
         if(sensorEnum == "X"){
-            var timeDate = NSDateFormatter.localizedStringFromDate(NSDate(), dateStyle: NSDateFormatterStyle.ShortStyle, timeStyle: NSDateFormatterStyle.MediumStyle)
-            connectedDevices[sensorName]?.timeStamp.append(timeDate)
             connectedDevices[sensorName]?.storeXVal(rawValue)
         }
         if(sensorEnum == "Y"){
@@ -76,9 +76,9 @@ class ViewController: UIViewController, BLEManagerDelegate {
     }
     //3). PREPARE DATA for plotting
     func setupPlotData(sensorName:String){
-                    plottedDevices[sensorName]?.accelX = []
-                    plottedDevices[sensorName]?.accelY = []
-                    plottedDevices[sensorName]?.accelZ = []
+        plottedDevices[sensorName]?.accelX = []
+        plottedDevices[sensorName]?.accelY = []
+        plottedDevices[sensorName]?.accelZ = []
         
         let dataCount = connectedDevices[sensorName]?.accelX.count
         for i in 0...PLOT_WINDOW{
@@ -100,37 +100,23 @@ class ViewController: UIViewController, BLEManagerDelegate {
     }
     //4). DISPLAY DATA on Chart View
     func plotData(){
-        var dataSets = [LineChartDataSet]()
+        plotView.dataSource = []
         for keys in plottedDevices.keys {
             if(plottedDevices[keys]!.accelX.count > 0){
                 switch(whatToGraph){
                 case GraphViews.AllX:
-                    var set1 = LineChartDataSet(yVals: plottedDevices[keys]!.accelX, label: keys + "X")
-                    dataSets.append(set1)
-                    break
+                    plotView.dataSource?.append(plottedDevices[keys]!.accelX)
                 case GraphViews.AllY:
-                    var set2 = LineChartDataSet(yVals: plottedDevices[keys]!.accelY, label: keys + "Y")
-                    dataSets.append(set2)
-                    break
+                    plotView.dataSource?.append(plottedDevices[keys]!.accelY)
                 case GraphViews.AllZ:
-                    var set3 = LineChartDataSet(yVals: plottedDevices[keys]!.accelZ, label: keys + "Z")
-                    dataSets.append(set3)
-                    break
+                    plotView.dataSource?.append(plottedDevices[keys]!.accelZ)
                 default:
-                    var set1 = LineChartDataSet(yVals: plottedDevices[keys]!.accelX, label: keys + "X")
-                    dataSets.append(set1)
-                    var set2 = LineChartDataSet(yVals: plottedDevices[keys]!.accelY, label: keys + "Y")
-                    dataSets.append(set2)
-                    var set3 = LineChartDataSet(yVals: plottedDevices[keys]!.accelZ, label: keys + "Z")
-                    dataSets.append(set3)
-                    break
+                    plotView.dataSource?.append(plottedDevices[keys]!.accelX)
+                    plotView.dataSource?.append(plottedDevices[keys]!.accelY)
+                    plotView.dataSource?.append(plottedDevices[keys]!.accelZ)
                 }
             }
         }
-        plotView.dataSource = []
-        plotView.dataSource?.append(plottedDevices["Accel C"]!.accelX)
-        plotView.dataSource?.append(plottedDevices["Accel C"]!.accelY)
-        plotView.dataSource?.append(plottedDevices["Accel C"]!.accelZ)
         plotView.plotData()
     }
 }
