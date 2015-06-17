@@ -80,24 +80,33 @@ class ViewController: UIViewController, BLEManagerDelegate {
         plottedDevices[sensorName]?.accelY = []
         plottedDevices[sensorName]?.accelZ = []
         
-        let dataCount = connectedDevices[sensorName]?.accelX.count
+        let dataCountX = connectedDevices[sensorName]?.accelX.count
+        let dataCountY = connectedDevices[sensorName]?.accelY.count
+        let dataCountZ = connectedDevices[sensorName]?.accelZ.count
         for i in 0...PLOT_WINDOW{
-            let arrayIndex = dataCount! - 1 - PLOT_WINDOW + i
-            let safeguard = max(min(arrayIndex, dataCount!-1), 0)
             
-            let dataX = connectedDevices[sensorName]?.accelX[safeguard] as Double!
+            let safeguardX = getValidPlotIndex(dataCountX! - 1 - PLOT_WINDOW + i, sizeOfArray: dataCountX!)
+            let safeguardY = getValidPlotIndex(dataCountY! - 1 - PLOT_WINDOW + i, sizeOfArray: dataCountY!)
+            let safeguardZ = getValidPlotIndex(dataCountZ! - 1 - PLOT_WINDOW + i, sizeOfArray: dataCountZ!)
+            
+            let dataX = connectedDevices[sensorName]?.accelX[safeguardX] as Double!
             let xDataEntry = ChartDataEntry(value: dataX, xIndex: i)
             plottedDevices[sensorName]?.accelX.append(xDataEntry)
             
-            let dataY = connectedDevices[sensorName]?.accelY[safeguard] as Double!
+            let dataY = connectedDevices[sensorName]?.accelY[safeguardY] as Double!
             let yDataEntry = ChartDataEntry(value: dataY, xIndex: i)
             plottedDevices[sensorName]?.accelY.append(yDataEntry)
             
-            let dataZ = connectedDevices[sensorName]?.accelZ[safeguard] as Double!
+            let dataZ = connectedDevices[sensorName]?.accelZ[safeguardZ] as Double!
             let zDataEntry = ChartDataEntry(value: dataZ, xIndex: i)
             plottedDevices[sensorName]?.accelZ.append(zDataEntry)
         }
     }
+    func getValidPlotIndex(expectedIndex:Int, sizeOfArray:Int)->Int{
+        let validPlotIndex =  max(min(expectedIndex, sizeOfArray-1), 0)
+        return validPlotIndex
+    }
+    
     //4). DISPLAY DATA on Chart View
     func plotData(){
         plotView.dataSource = []
@@ -173,21 +182,11 @@ extension ViewController{
     @IBAction func chooseGraphView(sender: AnyObject) {
         switch segmentControlView.selectedSegmentIndex
         {
-        case 0:
-            whatToGraph = GraphViews.AllAccelerometers
-            break
-        case 1:
-            whatToGraph = GraphViews.AllX
-            break
-        case 2:
-            whatToGraph = GraphViews.AllY
-            break
-        case 3:
-            whatToGraph = GraphViews.AllZ
-            break
-        default:
-            whatToGraph = GraphViews.AllAccelerometers
-            break
+        case 0: whatToGraph = GraphViews.AllAccelerometers
+        case 1: whatToGraph = GraphViews.AllX
+        case 2: whatToGraph = GraphViews.AllY
+        case 3: whatToGraph = GraphViews.AllZ
+        default: whatToGraph = GraphViews.AllAccelerometers
         }
     }
 }
@@ -241,18 +240,6 @@ extension ViewController: MFMailComposeViewControllerDelegate{
         self.presentViewController(mc, animated: true, completion: nil)
     }
     func mailComposeController(controller:MFMailComposeViewController, didFinishWithResult result:MFMailComposeResult, error:NSError) {
-        switch result.value {
-        case MFMailComposeResultCancelled.value:
-            break
-        case MFMailComposeResultSaved.value:
-            break
-        case MFMailComposeResultSent.value:
-            break
-        case MFMailComposeResultFailed.value:
-            break
-        default:
-            break
-        }
         self.dismissViewControllerAnimated(false, completion: nil)
     }
 }

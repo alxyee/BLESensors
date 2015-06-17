@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BLESensors/ViewController.swift"
-            timestampString = "456124357.076867"
+            timestampString = "456213810.542471"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "87"
-            endingLineNumber = "87"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "setupPlotData(_:)"
             landmarkType = "5">
          </BreakpointContent>
