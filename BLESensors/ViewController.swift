@@ -29,20 +29,9 @@ class ViewController: UIViewController, BLEManagerDelegate {
     @IBOutlet weak var plotView: GraphView!
     
     //Plot variables
-    var xAxisInd = [Int]()
     let PLOT_WINDOW = 100
     var plotLineColors = PlotChartChoices.pastel()
     var whatToGraph = GraphViews.AllAccelerometers
-    
-    //Accelerometer variables
-    var accelerometerA = Accelerometer()
-    var graphA = GraphData()
-    var accelerometerB = Accelerometer()
-    var graphB = GraphData()
-    var accelerometerC = Accelerometer()
-    var graphC = GraphData()
-    var accelerometerD = Accelerometer()
-    var graphD = GraphData()
     
     //BLE variables
     var bluetoothManager:BLEManager!
@@ -138,8 +127,6 @@ class ViewController: UIViewController, BLEManagerDelegate {
                 }
             }
         }
-        
-//        plotView.dataSource = plottedDevices["Accel C"]!.accelX
         plotView.dataSource = []
         plotView.dataSource?.append(plottedDevices["Accel C"]!.accelX)
         plotView.dataSource?.append(plottedDevices["Accel C"]!.accelY)
@@ -160,21 +147,16 @@ extension ViewController{
         mailButton.setTitle("\u{f0ee}", forState: UIControlState.Normal)
         connectButton.setTitle("\u{f00d}", forState: UIControlState.Normal)
         connectButton.tintColor = UIColor(red: 255/255.0, green: 105/255.0, blue: 97/255.0, alpha: 1.0)
-        
-        //Setup x-axis array
-        for i in 0...PLOT_WINDOW {
-            xAxisInd.append(i)
-        }
     }
     func setConnectedDeviceDictionary(){
-        connectedDevices["Accel A"] = accelerometerA
-        plottedDevices["Accel A"] = graphA
-        connectedDevices["Accel B"] = accelerometerB
-        plottedDevices["Accel B"] = graphB
-        connectedDevices["Accel C"] = accelerometerC
-        plottedDevices["Accel C"] = graphC
-        connectedDevices["Accel D"] = accelerometerD
-        plottedDevices["Accel D"] = graphD
+        connectedDevices["Accel A"] = Accelerometer()
+        plottedDevices["Accel A"] = GraphData()
+        connectedDevices["Accel B"] = Accelerometer()
+        plottedDevices["Accel B"] = GraphData()
+        connectedDevices["Accel C"] = Accelerometer()
+        plottedDevices["Accel C"] = GraphData()
+        connectedDevices["Accel D"] = Accelerometer()
+        plottedDevices["Accel D"] = GraphData()
     }
 }
 //MARK: GUI Button Handler

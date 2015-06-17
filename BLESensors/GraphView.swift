@@ -24,8 +24,8 @@ class GraphView: LineChartView {
     func doPlot(){
         var dataSets = [LineChartDataSet]()
         for dataEntry in dataSource{
-        var set1 = LineChartDataSet(yVals: dataEntry, label: "Data")
-        dataSets.append(set1)
+            var set1 = LineChartDataSet(yVals: dataEntry, label: "Data")
+            dataSets.append(set1)
         }
         var xAxisInd = [Int]()
         for i in 0...100 {
