@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="fontawesome-webfont.ttf">
@@ -22,25 +23,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="mgM-oi-HGO">
-                                <rect key="frame" x="-61" y="-14" width="123" height="29"/>
-                                <segments>
-                                    <segment title="All"/>
-                                    <segment title="X"/>
-                                    <segment title="Y"/>
-                                    <segment title="Z"/>
-                                </segments>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="99" y="494" width="194" height="29"/>
-                                </variation>
-                                <connections>
-                                    <action selector="chooseGraphView:" destination="BYZ-38-t0r" eventType="valueChanged" id="2Ck-GZ-lT3"/>
-                                </connections>
-                            </segmentedControl>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8K-Py-nVL">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="500" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O8K-Py-nVL">
+                                <rect key="frame" x="16" y="498" width="149" height="52"/>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Connect">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <variation key="widthClass=compact" fixedFrame="YES">
@@ -51,11 +37,19 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pUt-Wq-QJb">
-                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <rect key="frame" x="510" y="498" width="74" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="128" id="cbL-q8-6yN"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="FontAwesome" family="FontAwesome" pointSize="40"/>
-                                <state key="normal" title="Button">
+                                <state key="normal" title="Mail">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="cbL-q8-6yN"/>
+                                    </mask>
+                                </variation>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="309" y="493" width="46" height="30"/>
                                 </variation>
@@ -64,25 +58,53 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbq-ot-Ceo" customClass="GraphView" customModule="BLESensors">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="20" y="28" width="564" height="474"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <variation key="widthClass=compact" fixedFrame="YES">
                                     <rect key="frame" x="16" y="28" width="339" height="148"/>
                                 </variation>
                             </view>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="200" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="zCx-Vs-NfQ">
+                                <rect key="frame" x="173" y="510" width="329" height="29"/>
+                                <segments>
+                                    <segment title="All"/>
+                                    <segment title="X"/>
+                                    <segment title="Y"/>
+                                    <segment title="Z"/>
+                                </segments>
+                                <connections>
+                                    <action selector="chooseGraphView:" destination="BYZ-38-t0r" eventType="valueChanged" id="T5r-sO-Wzu"/>
+                                </connections>
+                            </segmentedControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="zCx-Vs-NfQ" firstAttribute="top" secondItem="Pbq-ot-Ceo" secondAttribute="bottom" constant="8" symbolic="YES" id="6ez-tj-s9N"/>
+                            <constraint firstItem="zCx-Vs-NfQ" firstAttribute="centerY" secondItem="O8K-Py-nVL" secondAttribute="centerY" id="8eU-DY-oRO"/>
+                            <constraint firstItem="Pbq-ot-Ceo" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="ARd-CE-rAy"/>
+                            <constraint firstItem="zCx-Vs-NfQ" firstAttribute="baseline" secondItem="O8K-Py-nVL" secondAttribute="baseline" id="BUF-xK-iY9"/>
+                            <constraint firstItem="pUt-Wq-QJb" firstAttribute="centerY" secondItem="O8K-Py-nVL" secondAttribute="centerY" id="RlL-VH-rJF"/>
+                            <constraint firstItem="Pbq-ot-Ceo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ZBd-z7-bXu"/>
+                            <constraint firstItem="Pbq-ot-Ceo" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="8" symbolic="YES" id="ZhY-kB-Dt6"/>
+                            <constraint firstItem="O8K-Py-nVL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="agA-OS-7rJ"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="zCx-Vs-NfQ" secondAttribute="bottom" constant="8" symbolic="YES" id="eWx-eC-Psn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Pbq-ot-Ceo" secondAttribute="trailing" constant="4" id="jMd-Vu-l1g"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="O8K-Py-nVL" secondAttribute="bottom" constant="50" id="mb9-tc-Dmr"/>
+                            <constraint firstItem="Pbq-ot-Ceo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" symbolic="YES" id="skX-MQ-xEC"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="pUt-Wq-QJb" secondAttribute="trailing" id="vnF-fV-FdN"/>
+                            <constraint firstItem="pUt-Wq-QJb" firstAttribute="leading" secondItem="zCx-Vs-NfQ" secondAttribute="trailing" constant="8" symbolic="YES" id="weN-NJ-AZU"/>
+                            <constraint firstItem="zCx-Vs-NfQ" firstAttribute="leading" secondItem="O8K-Py-nVL" secondAttribute="trailing" constant="8" symbolic="YES" id="wna-4H-BoW"/>
+                        </constraints>
                         <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="mgM-oi-HGO"/>
-                                <exclude reference="O8K-Py-nVL"/>
-                                <exclude reference="pUt-Wq-QJb"/>
-                                <exclude reference="Pbq-ot-Ceo"/>
+                            <mask key="constraints">
+                                <exclude reference="ZhY-kB-Dt6"/>
+                                <exclude reference="jMd-Vu-l1g"/>
+                                <exclude reference="BUF-xK-iY9"/>
+                                <exclude reference="eWx-eC-Psn"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
-                                <include reference="mgM-oi-HGO"/>
                                 <include reference="O8K-Py-nVL"/>
                                 <include reference="pUt-Wq-QJb"/>
                                 <include reference="Pbq-ot-Ceo"/>
@@ -93,12 +115,12 @@
                         <outlet property="connectButton" destination="O8K-Py-nVL" id="4Tv-yu-U75"/>
                         <outlet property="mailButton" destination="pUt-Wq-QJb" id="ulz-oH-Xfq"/>
                         <outlet property="plotView" destination="Pbq-ot-Ceo" id="uT4-uv-g2t"/>
-                        <outlet property="segmentControlView" destination="mgM-oi-HGO" id="gZ1-NH-0rw"/>
+                        <outlet property="segmentControlView" destination="zCx-Vs-NfQ" id="Mru-S1-6uz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="244.5" y="228"/>
+            <point key="canvasLocation" x="194" y="291"/>
         </scene>
     </scenes>
 </document>
