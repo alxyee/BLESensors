@@ -17,12 +17,6 @@ import MessageUI
 5). EMAIL DATA - MFMaildelegate
 */
 class ViewController: UIViewController, BLEManagerDelegate {
-    enum GraphViews {
-        case AllAccelerometers
-        case AllX
-        case AllY
-        case AllZ
-    }
     @IBOutlet weak var connectButton: UIButton!
     @IBOutlet weak var segmentControlView: UISegmentedControl!
     @IBOutlet weak var mailButton: UIButton!
@@ -30,8 +24,7 @@ class ViewController: UIViewController, BLEManagerDelegate {
     
     //Plot variables
     let PLOT_WINDOW = 100
-    var plotLineColors = PlotChartChoices.pastel()
-    var whatToGraph = GraphViews.AllAccelerometers
+    var whatToGraph = "All Accelerometers"
     
     //BLE variables
     var bluetoothManager:BLEManager!
@@ -76,56 +69,36 @@ class ViewController: UIViewController, BLEManagerDelegate {
     }
     //3). PREPARE DATA for plotting
     func setupPlotData(sensorName:String){
-        plottedDevices[sensorName]?.accelX = []
-        plottedDevices[sensorName]?.accelY = []
-        plottedDevices[sensorName]?.accelZ = []
-        
-        let dataCountX = connectedDevices[sensorName]?.accelX.count
-        let dataCountY = connectedDevices[sensorName]?.accelY.count
-        let dataCountZ = connectedDevices[sensorName]?.accelZ.count
-        for i in 0...PLOT_WINDOW{
-            
-            let safeguardX = getValidPlotIndex(dataCountX! - 1 - PLOT_WINDOW + i, sizeOfArray: dataCountX!)
-            let safeguardY = getValidPlotIndex(dataCountY! - 1 - PLOT_WINDOW + i, sizeOfArray: dataCountY!)
-            let safeguardZ = getValidPlotIndex(dataCountZ! - 1 - PLOT_WINDOW + i, sizeOfArray: dataCountZ!)
-            
-            let dataX = connectedDevices[sensorName]?.accelX[safeguardX] as Double!
-            let xDataEntry = ChartDataEntry(value: dataX, xIndex: i)
-            plottedDevices[sensorName]?.accelX.append(xDataEntry)
-            
-            let dataY = connectedDevices[sensorName]?.accelY[safeguardY] as Double!
-            let yDataEntry = ChartDataEntry(value: dataY, xIndex: i)
-            plottedDevices[sensorName]?.accelY.append(yDataEntry)
-            
-            let dataZ = connectedDevices[sensorName]?.accelZ[safeguardZ] as Double!
-            let zDataEntry = ChartDataEntry(value: dataZ, xIndex: i)
-            plottedDevices[sensorName]?.accelZ.append(zDataEntry)
-        }
+        plottedDevices[sensorName]?.xData = getSubArray(connectedDevices[sensorName]!.accelX)
+        plottedDevices[sensorName]?.yData = getSubArray(connectedDevices[sensorName]!.accelY)
+        plottedDevices[sensorName]?.zData = getSubArray(connectedDevices[sensorName]!.accelZ)
     }
-    func getValidPlotIndex(expectedIndex:Int, sizeOfArray:Int)->Int{
-        let validPlotIndex =  max(min(expectedIndex, sizeOfArray-1), 0)
-        return validPlotIndex
+    func getSubArray(inputArray: [Double]) -> [Double] {
+        var minValue = max(inputArray.count - PLOT_WINDOW, 0)
+        var maxValue = min(minValue + PLOT_WINDOW, inputArray.count)
+        var subArray = Array(inputArray[minValue..<maxValue])
+        return subArray
     }
-    
     //4). DISPLAY DATA on Chart View
     func plotData(){
-        plotView.dataSource = []
+        plotView.dataLabelAndArray = []
         for keys in plottedDevices.keys {
-            if(plottedDevices[keys]!.accelX.count > 0){
-                switch(whatToGraph){
-                case GraphViews.AllX:
-                    plotView.dataSource?.append(plottedDevices[keys]!.accelX)
-                case GraphViews.AllY:
-                    plotView.dataSource?.append(plottedDevices[keys]!.accelY)
-                case GraphViews.AllZ:
-                    plotView.dataSource?.append(plottedDevices[keys]!.accelZ)
+            if(plottedDevices[keys]!.xData.count > 0){
+                switch whatToGraph{
+                case "All X":
+                    plotView.dataLabelAndArray.append(("\(keys) X", plottedDevices[keys]!.xData))
+                case "All Y":
+                    plotView.dataLabelAndArray.append(("\(keys) Y", plottedDevices[keys]!.yData))
+                case "All Z":
+                    plotView.dataLabelAndArray.append(("\(keys) Z", plottedDevices[keys]!.zData))
                 default:
-                    plotView.dataSource?.append(plottedDevices[keys]!.accelX)
-                    plotView.dataSource?.append(plottedDevices[keys]!.accelY)
-                    plotView.dataSource?.append(plottedDevices[keys]!.accelZ)
+                    plotView.dataLabelAndArray.append(("\(keys) X", plottedDevices[keys]!.xData))
+                    plotView.dataLabelAndArray.append(("\(keys) Y", plottedDevices[keys]!.yData))
+                    plotView.dataLabelAndArray.append(("\(keys) Z", plottedDevices[keys]!.zData))
                 }
             }
         }
+        plotView.plotWindowLength = PLOT_WINDOW
         plotView.plotData()
     }
 }
@@ -182,11 +155,11 @@ extension ViewController{
     @IBAction func chooseGraphView(sender: AnyObject) {
         switch segmentControlView.selectedSegmentIndex
         {
-        case 0: whatToGraph = GraphViews.AllAccelerometers
-        case 1: whatToGraph = GraphViews.AllX
-        case 2: whatToGraph = GraphViews.AllY
-        case 3: whatToGraph = GraphViews.AllZ
-        default: whatToGraph = GraphViews.AllAccelerometers
+        case 0: whatToGraph = "All Accelerometers"
+        case 1: whatToGraph = "All X"
+        case 2: whatToGraph = "All Y"
+        case 3: whatToGraph = "All Z"
+        default: whatToGraph = "All Accelerometers"
         }
     }
 }
